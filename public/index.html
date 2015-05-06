@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+ <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class="container">
+<div class="sidebar">
+<ul>
+<h2>New Dish</h2>
+<div id="newDish">
+  <input type = "text" id="dishName" placeholder="Add dish name">
+  <input type = "text" id="dishPrice" placeholder="Add dish price">
+  <input type = "text" id="dishUrl" placeholder="Add dishes image url">
+<!--   <select>
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Dinner</option>
+  </select> -->
+  <!-- <br> -->
+  <button id="newButton">Add to menu</button>
+  </ul>
+</div>
+<div class="content">
+    <a href="/#dishes">
+      <h1>Menu du jour</h1>
+    </a>
+    <section id="allDishes">
+    </section>
+    
+    <section id="main">
+    </section>
+
+
+<!-- Templates -->
+
+  <script type="text/template" id="showAllDishes">
+      <div id="viewAllDishes">
+        <% dish.forEach(function(dish){ %> 
+        <div id="namePrice">
+          <%- dish.name %>
+          <br> 
+          <%- dish.price %>
+          </div>
+        <div id="image">
+          <a href = "#dishes/<%- dish.id %>" >
+          <img src =" <%- dish.image_url %> ">
+          </a>
+        </div>
+        <% }) %> 
+      </div>
+  </script>
+
+  <script type="text/template" id="showDish">
+
+      <div id="viewDish">
+        <h3>Update or delete dish below:</h3>
+        <div id="namePrice">
+          <%- dish.name %>
+          <br> 
+          <%- dish.price %>
+          </div>
+        <div id="image">
+          <img src =" <%- dish.image_url %> ">
+        </div>
+        <div id="buttons">
+          <a href = "#dishes/<%- dish.id %>/edit" >
+          <button id = "editButton">Edit</button>
+          </a>
+          <a href = "/#dishes" >
+          <button id = "deleteButton">Delete</button>
+          </a>
+        </div>
+      </div>
+  </script>
+
+  <script type="text/template" id="editDish">
+  
+    <div id="editDishForm">
+        <h1>Edit your dish below:</h3>
+        <input id="dishName<%- dish.id %>" placeholder="<%- dish.name %>">
+        <input id="dishPrice<%- dish.id %>" placeholder="<%- dish.price %>" >
+        <input id="dishUrl<%- dish.id %>" placeholder="<%- dish.image_url %>">
+        <a href = "#dishes/<%- dish.id %>" >
+        <br>
+        <input id="editDish" type="submit">
+        <a href = "/#dishes/<%- dish.id %>" >
+          <button>Back</button>
+          </a>
+        </a>
+    </div>
+
+  </script>
+
+  <script type="text/template" id="newDish">
+  
+    <div id="newDishForm">
+        <h1>Add a new dish below:</h3>
+        <input id="dishName" placeholder="Add dish name">
+        <input id="dishPrice" placeholder="Add dish price">
+        <input id="dishUrl" placeholder="Add dishes image url">
+        <select>
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+        </select>
+        <input id="addNewDish" type="submit">
+    </div>
+
+  </script>
+
+  <!-- ========= -->
+  <!-- Libraries -->
+  <!-- ========= -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+  <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.11.3/backbone-validation-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/draggabilly/1.2.0/draggabilly.pkgd.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <script src="/scripts/models.js"></script>
+  <script src="/scripts/collections.js"></script>
+  <script src="/scripts/views.js"></script>
+  <script src="/scripts/routes.js"></script>
+</div>
+</div>
+</body>
+</html>
+
+<!-- var a = document.createElement('a');
+  //        div.setAttribute("class", "image");
+  //        a.href = "#dishes/" + dish.id;
+  //        a.innerHTML = '<img src="' + dish.image_url + '">';
+  //        // a.innerText = dish.name;
+  //        div.appendChild(a);
+  //        allDishes.appendChild(div); -->
